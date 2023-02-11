@@ -1,36 +1,33 @@
 package com.directi.training.lsp.exercise;
 
-public class ElectronicDuck extends Duck
-{
+public class ElectronicDuck implements IDuck {
     private boolean _on = false;
 
-    @Override
-    public void quack()
-    {
+    public void quack() {
+        this.turnOn();
         if (_on) {
             System.out.println("Electronic duck quack...");
         } else {
             throw new RuntimeException("Can't quack when off");
         }
+        this.turnOff();
     }
 
-    @Override
-    public void swim()
-    {
+    public void swim() {
+        this.turnOn();
         if (_on) {
             System.out.println("Electronic duck swim");
         } else {
             throw new RuntimeException("Can't swim when off");
         }
+        this.turnOff();
     }
 
-    public void turnOn()
-    {
+    public void turnOn() {
         _on = true;
     }
 
-    public void turnOff()
-    {
+    public void turnOff() {
         _on = false;
     }
 }
