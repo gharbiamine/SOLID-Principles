@@ -1,0 +1,31 @@
+@startuml OCP
+interface Resource
+{
+       +allocate()
+       +markSlotFree(int resourceId);
+       +markSlotBusy(int resourceId);
+       +finsFreeSlot()
+}
+class SpaceResource implements Resource
+{
+       +allocate()
+       +markSlotFree(int resourceId);
+       +markSlotBusy(int resourceId);
+       +finsFreeSlot()
+}
+class TimeResource implements Resource
+{
+       +allocate()
+       +markSlotFree(int resourceId);
+       +markSlotBusy(int resourceId);
+       +finsFreeSlot()
+}
+class ResourceAllocator
+{
+       +allocate(Resource resource)
+       +free(Resource resource,int resourceId)
+       -{static}  final int INVALID_RESOURCE_ID = -1;
+}
+ResourceAllocator -->SpaceResource:use
+ResourceAllocator -->TimeResource:use
+@enduml

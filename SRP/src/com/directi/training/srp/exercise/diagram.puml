@@ -1,0 +1,38 @@
+@startuml SRP
+class Car {
+ - final String id 
+ - final String model
+ - final String brand
+ + Car(String id, String model, String brand)
+ +getId() : String
+ +getModel() : String
+ +getBrand() : String
+}
+class CarData
+{
+       - List<Car> _carsDb
+       +getCars() : List<Car>
+       +setCars() : void
+}
+class CarFormatter
+{
+       - List<Car> _carsDb
+       +getCarNames() : String
+}
+class CarManager 
+{
+       - List<Car> _carsDb
+       +getFromDb(carId:String) : Car
+}
+class carRanker
+{
+       -CarData
+       +getBestCar() : Car
+}
+
+CarFormatter o-- CarData 
+CarManager o-- CarData 
+carRanker o-- CarData 
+CarData --> Car : uses
+
+@enduml

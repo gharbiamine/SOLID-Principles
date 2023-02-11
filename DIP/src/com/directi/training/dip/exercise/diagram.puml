@@ -1,0 +1,21 @@
+@startuml DIP
+class EncodingModuleClient {
+    + {static} main(String[] args) : void
+}
+class EncodingModule{
+    + encodeWithFiles() : void
+    + encodeBasedOnNetworkAndDatabase() : void
+}
+class MyDatabase implements IDatasource{
+    -{static} int counter
+    -{static} Map<Integer, String> _data
+    + write(String inputString): int
+}
+
+interface IDatasource {
+    + write(String inputString) : int
+}
+EncodingModuleClient -- EncodingModule : use
+EncodingModule -- MyDatabase : use
+
+@enduml
