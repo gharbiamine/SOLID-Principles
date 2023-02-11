@@ -1,29 +1,29 @@
 @startuml OCP
 interface Resource
 {
-       +allocate()
-       +markSlotFree(int resourceId);
-       +markSlotBusy(int resourceId);
-       +finsFreeSlot()
+       +allocate():int
+       +markSlotFree(int resourceId):void;
+       +markSlotBusy(int resourceId):void;
+       +finsFreeSlot():int
 }
 class SpaceResource implements Resource
 {
-       +allocate()
-       +markSlotFree(int resourceId);
-       +markSlotBusy(int resourceId);
-       +finsFreeSlot()
+       +allocate():int
+       +markSlotFree(int resourceId):void;
+       +markSlotBusy(int resourceId):void;
+       +finsFreeSlot():int
 }
 class TimeResource implements Resource
 {
-       +allocate()
-       +markSlotFree(int resourceId);
-       +markSlotBusy(int resourceId);
-       +finsFreeSlot()
+       +allocate():int
+       +markSlotFree(int resourceId):void;
+       +markSlotBusy(int resourceId):void;
+       +finsFreeSlot():int
 }
 class ResourceAllocator
 {
-       +allocate(Resource resource)
-       +free(Resource resource,int resourceId)
+       +allocate(Resource resource):int;
+       +free(Resource resource,int resourceId):void;
        -{static}  final int INVALID_RESOURCE_ID = -1;
 }
 ResourceAllocator -->SpaceResource:use
